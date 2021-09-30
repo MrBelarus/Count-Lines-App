@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\vladk\\source\\repos\\CountLines_App\\CountLines_App\\CountLines_App.csproj": {}
+    "C:\\Users\\vladk\\source\\repos\\Count-Lines-App\\CountLines_App\\CountLines_App.csproj": {}
   },
   "projects": {
-    "C:\\Users\\vladk\\source\\repos\\CountLines_App\\CountLines_App\\CountLines_App.csproj": {
+    "C:\\Users\\vladk\\source\\repos\\Count-Lines-App\\CountLines_App\\CountLines_App.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\vladk\\source\\repos\\CountLines_App\\CountLines_App\\CountLines_App.csproj",
+        "projectUniqueName": "C:\\Users\\vladk\\source\\repos\\Count-Lines-App\\CountLines_App\\CountLines_App.csproj",
         "projectName": "CountLines_App",
-        "projectPath": "C:\\Users\\vladk\\source\\repos\\CountLines_App\\CountLines_App\\CountLines_App.csproj",
+        "projectPath": "C:\\Users\\vladk\\source\\repos\\Count-Lines-App\\CountLines_App\\CountLines_App.csproj",
         "packagesPath": "C:\\Users\\vladk\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\vladk\\source\\repos\\CountLines_App\\CountLines_App\\obj\\",
+        "outputPath": "C:\\Users\\vladk\\source\\repos\\Count-Lines-App\\CountLines_App\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

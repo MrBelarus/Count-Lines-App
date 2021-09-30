@@ -18,7 +18,37 @@ namespace CountLines_App
     {
         private MainForm _mainForm;
         private List<FileInfo> _scriptFiles;
+        private HashSet<string> _exclusionFolders;
+        private HashSet<string> _exclusionFiles;
         private string _fileExtention = null;
+
+        public int ExclusionsCount => _exclusionFolders.Count + _exclusionFiles.Count;
+        public string[] ExclusionFolders
+        {
+            get
+            {
+                string[] result = new string[_exclusionFolders.Count];
+                int i = 0;
+                foreach (string exclusion in _exclusionFolders)
+                {
+                    result[i++] = exclusion;
+                }
+                return result;
+            }
+        }
+        public string[] ExclusionFiles
+        {
+            get
+            {
+                string[] result = new string[_exclusionFiles.Count];
+                int i = 0;
+                foreach (string exclusion in _exclusionFiles)
+                {
+                    result[i++] = exclusion;
+                }
+                return result;
+            }
+        }
 
         private Languages _language;
         public Languages Language { get => _language; set => _language = value; }
@@ -27,6 +57,8 @@ namespace CountLines_App
         {
             _mainForm = mainForm;
             _scriptFiles = new List<FileInfo>();
+            _exclusionFiles = new HashSet<string>();
+            _exclusionFolders = new HashSet<string>();
         }
 
         public void CountLines(Languages language, string rootFolderPath)
@@ -99,9 +131,17 @@ namespace CountLines_App
         {
             DirectoryInfo directoryInfo = new DirectoryInfo(currentFolderPath);
 
+            if (_exclusionFolders.Contains(directoryInfo.FullName))
+            {
+                return;
+            }
+
             foreach (FileInfo file in directoryInfo.GetFiles(extention))
             {
-                _scriptFiles.Add(file);
+                if (!_exclusionFiles.Contains(file.FullName))
+                {
+                    _scriptFiles.Add(file);
+                }
             }
 
             DirectoryInfo[] childDirectories = directoryInfo.GetDirectories();
@@ -109,9 +149,67 @@ namespace CountLines_App
             {
                 foreach (DirectoryInfo directory in childDirectories)
                 {
-                    FindScriptFiles(directory.FullName, extention);
+                    if (!_exclusionFolders.Contains(directory.FullName))
+                    {
+                        FindScriptFiles(directory.FullName, extention);
+                    }
                 }
             }
+        }
+
+        public string AddFilesExclusion(string fullPath)
+        {
+            if (_exclusionFiles.Add(fullPath))
+            {
+                return fullPath;
+            }
+            return null;
+        }
+
+        public string[] AddFilesExclusion(string[] scriptsFullPath)
+        {
+            List<string> successAddedScripts = new List<string>();
+            for (int i = 0; i < scriptsFullPath.Length; i++)
+            {
+                if (_exclusionFiles.Add(scriptsFullPath[i]))
+                {
+                    successAddedScripts.Add(scriptsFullPath[i]);
+                }
+            }
+            return successAddedScripts.ToArray();
+        }
+
+        public string RemoveScriptExclusion(string fullPath)
+        {
+            if (_exclusionFiles.Remove(fullPath))
+            {
+                return fullPath;
+            }
+            return null;
+        }
+
+        public string AddFolderExclusion(string fullPath)
+        {
+            if (_exclusionFolders.Add(fullPath))
+            {
+                return fullPath;
+            }
+            return null;
+        }
+
+        public string RemoveFolderExclusion(string fullPath)
+        {
+            if (_exclusionFolders.Remove(fullPath))
+            {
+                return fullPath;
+            }
+            return null;
+        }
+
+        public void RemoveAllExclusions()
+        {
+            _exclusionFolders.Clear();
+            _exclusionFiles.Clear();
         }
     }
 }

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "8Mz0KRTP4uWMAgonP5uABzpRzmjPvKcWNGfVb0vcwFi8PDSZdSzMOy8h8YeKDg734SruXVxscLXIdqAZHCdL5g==",
+  "dgSpecHash": "Q8qC9htOwpW9FCf6HugBkYF/GzN0Do3ete3Fs+0XjwDnemN00t29iWpUt4DT7Ze3OsEMJvuqvhO7rnrp1S0T2Q==",
   "success": true,
-  "projectFilePath": "C:\\Users\\vladk\\source\\repos\\CountLines_App\\CountLines_App\\CountLines_App.csproj",
+  "projectFilePath": "C:\\Users\\vladk\\source\\repos\\Count-Lines-App\\CountLines_App\\CountLines_App.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }
